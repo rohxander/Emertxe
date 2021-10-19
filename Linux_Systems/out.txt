@@ -1,0 +1,7 @@
+/home/rohxander/Linux_Systems
+/home/rohxander/Linux_Systems
+D4
+out.txt
+renamed.txt
+rohit.txt
+rohit
