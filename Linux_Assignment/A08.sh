@@ -9,29 +9,40 @@
 	#Number 2 : 20.45
 #Sample Output :
 	#The answer is 30.77
-if [ $# -eq 0 ]
-then
-	echo Error : Please pass the arguments through command line.
-elif [ $# -lt 3 ]
-then
-	echo Error : Please pass 3 arguments.
-else
-	case $2 in
-		+)
-			echo $1 + $3 | bc 
-			;;
-		-)
-			echo $1 - $3 | bc 
-			;;
-		x)
-			echo "$1 * $3" | bc  
-			;;
-		/)
-			echo " scale=2 ;$1 / $3" | bc
-			;;
-		*)
-			echo unknown operation
-			;;
-	esac
-fi
-
+string=$@
+case ${string:${#string}-1 :1} in
+	+)
+		for i in `seq 0 1 $((${#string} - 2 ))`
+		do
+			((sum= $sum + ${string: $i : 1 }))
+		done
+		echo $sum
+		;;
+	-)
+		sub=${string:0:1}
+		for i in `seq 1 1 $((${#string} - 2 ))`
+		do
+			((sub= $sub - ${string: $i : 1 }))
+		done
+		echo $sub 
+		;;
+	x)
+		mul=1
+		for i in `seq 0 1 $((${#string} - 2 ))`
+		do
+			((mul= $mul * ${string: $i : 1 } )) 
+		done
+		echo $mul
+		;;
+	/)
+		div=${string:0:1}
+		for i in `seq 1 1 $((${#string} - 2 ))`
+		do
+			div=`echo "scale=2 ; $div / ${string: $i : 1 }" | bc`  
+		done
+		echo $div
+		;;
+	*)
+		echo Error: Operator missing or invalid operator, please pass
+		;;
+esac
