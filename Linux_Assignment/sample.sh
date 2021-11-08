@@ -1,40 +1,35 @@
-	
 #!/bin/bash
 
-#Rohit Prakash
+array=($@)			#gettting all CLA into array
 
-#16/10/2021
-
-#Description : Write a script for addition of two numbers for real numbers also
-
-#Sample Input :
-
-	#Enter the numbers to do addition
-
-	#Number 1 : 10.32
-
-	#Number 2 : 20.45
-
-#Sample Output :
-
-	#The answer is 30.77
-
-
-
-echo "Enter the numbers to do addition"
-
-read -p "Enter 1st number : " num1
-
-read -p "Enter 2nd number : " num2
-
-if [[ $num2 =~ ^[-+]?[0-9]*[.]?[0-9]+$ && $num1 =~ ^[-+]?[0-9]*[.]?[0-9]+$ ]]
-
-then
-
-	echo "The answer is `echo $num1 + $num2 | bc` "
-
-else
-
-	echo Error : Please enter only integers or real numbers
-
-fi
+for i in `seq 0 1 $((${#array[@]} - 1 ))`  #iterating through all elements in array
+do
+	if [ ${array[$i]} = -x ]				#true if current element is -x
+	then
+		x=${array[$(($i+1))]}				#assigning next element to variable x
+	elif [ ${array[$i]} = -y ]				#true if current element is -y
+	then
+		y=${array[$(($i+1))]}				#assigning next element to variable y
+	elif [ ${array[$i]} = -o ]				#true if current element is -o
+	then
+		operator=${array[$(($i+1))]}		#assigning next element to variable operator
+		
+	fi
+done
+case $operator in
+	add)
+		echo -n `expr "$x + $y" | bc`	#adding
+		;;
+	sub)
+		echo -n `expr "$x - $y" | bc` 	#subtracting
+		;;
+	mul)
+		echo -n `expr "$x * $y" | bc`  #multiplying
+		;;
+	div)
+		echo -n `expr "scale=2; $x / $y" | bc`		#dividing
+		;;
+	*)
+		echo unknown operation
+		;;
+esac

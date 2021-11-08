@@ -13,7 +13,8 @@
 echo "Enter the numbers to do addition"
 read -p "Enter 1st number : " num1
 read -p "Enter 2nd number : " num2
-if [[ $num2 =~ ^[-+]?[0-9]*[.]?[0-9]+$ && $num1 =~ ^[-+]?[0-9]*[.]?[0-9]+$ ]]
+regex='^[-+]?[0-9]*[.]?[0-9]+$'
+if [[ $num1 =~ $regex && $num2 =~ $regex ]]
 then
 	echo "The answer is `echo $num1 + $num2 | bc` "
 else

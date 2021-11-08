@@ -1,17 +1,25 @@
 #!/bin/bash
 
 #Rohit Prakash
-#16/10/2021
-#Description : Write a script for addition of two numbers for real numbers also
+#23/10/2021
+#Description : Write a script to find the larger number of 'n' number of arguments
+
 #Sample Input :
-	#Enter the numbers to do addition
-	#Number 1 : 10.32
-	#Number 2 : 20.45
+# $./A05.sh 5 6 8 4 2 1
 #Sample Output :
-	#The answer is 30.77
+#	Largest value is 8
+#Sample Input :
+# $./A05.sh 9
+#Sample Output :
+#	Largest value is 9
+#Sample Input :
+# $./A05.sh
+#Sample Output :
+#	Error: No arguments passed
+
 if [ $# -eq 0 ]
 then
-	echo Error : Please pass the arguments through command line.
+	echo Error : No arguments passed
 else
 	array=($@)
 	largest=${array[0]}
@@ -22,6 +30,6 @@ else
 			((largest=${array[$i]}))
 		fi
 	done
-	echo $largest
+	echo The largest value is $largest
 fi
 

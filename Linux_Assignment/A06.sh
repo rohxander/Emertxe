@@ -1,18 +1,18 @@
 #!/bin/bash
 
 #Rohit Prakash
-#16/10/2021
+#23/10/2021
 #Description : Write a script to print a given number in reverse order
 #Sample Input :
-	# $A06.sh/ 1234
+	# $A06.sh/ 12345
 #Sample Output :
-	#4321
+	#Reversed Number - 54321
 #Sample Input :
-	# $A06.sh/ 12340000
+	# $A06.sh/ 1540
 #Sample Output :
-	#4321
+	#Reversed Number 451
 #Sample Input :
-	# $A06.sh/ 1
+	# $A06.sh/ 5
 #Sample Output :
 	#Error : Error: pass a multi-digit number
 #Sample Input :
@@ -20,10 +20,11 @@
 #Sample Output :
 	#Error: No argument passed
 #Sample Input :
-	# $A06.sh/ 1e1e1e
+	# $A06.sh/ 15f43
 #Sample Output :
-	#Error : Please enter only positive integers
+	#Error : Enter only numbers
 
+	
 num=$@
 if [ ${#num} -ne 0 ]
 then
@@ -44,13 +45,13 @@ then
 				((num=$num-$lastDigit))
 				((num=$num/10))
 			done
-			echo $revNumber
+			echo Reversed Number - $revNumber
 
 		else
-			echo Error : Please enter only positive integers
+			echo Error : Enter only numbers
 		fi
 	else
-		echo Error: pass a multi-digit number
+		echo Error: Pass a multi-digit number
 	fi
 else
 	echo Error: No argument passed
