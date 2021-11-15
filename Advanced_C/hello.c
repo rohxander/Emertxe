@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include <stdlib.h>
 
 int num1 = 3000;
 int num2 = 2000;
@@ -27,6 +28,23 @@ printf("A : %c\n",ch);
 printf("character equivalent of 65 : %c\n",bh);
 // scanf("%d",&num1);
 // printf("%d",num1);
-scanf("%d%f%c\n",&num1,&f,&ch);
-printf("%d   %c   %f\n",num1,ch,f );
+float f1 = 0 ;
+float f2 = 0 ;
+// scanf("%d %d %f %f",&num1,&num2,&f1,&f2);
+// printf("%d %d\n",num1,num2);
+// printf("%f %f\n",f1,f2);
+// scanf("%d%f%c\n",&num1,&f,&ch);
+// printf("%d   %c   %f\n",num1,ch,f );
+char cho = -126 ;
+char xo = 'A' ;
+printf("%d %c\n",cho,cho);
+
+
+int integer = -120;
+int abs(int integer);
+printf("Integer = %d\n",integer);
+
+// int number = 2 ;
+// int*pointer = &number ;
+// printf ("%ls",pointer);
 }
